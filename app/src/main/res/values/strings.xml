@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Dices</string>
+    <string name="new_game_text">Nowa gra</string>
+    <string name="results_text">Wyniki</string>
+    <string name="exit_text">Wyjście</string>
+    <string name="title_activity_game">GameActivity</string>
+</resources>

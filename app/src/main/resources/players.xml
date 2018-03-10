@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<highScores>
+    <players>
+        <player>
+            <name>default</name>
+            <id>defaultId</id>
+            <score>0</score>
+        </player>
+    </players>
+</highScores>
