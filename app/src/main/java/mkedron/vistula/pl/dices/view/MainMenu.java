@@ -17,8 +17,9 @@ public class MainMenu extends AppCompatActivity {
 
     public void printPlayers(View view) {
         System.out.println("nastepuje proba");
-        PlayerDao playerDao = new PlayerDao();
-
-        playerDao.getPlayers(1);
+        PlayerDao playerDao = PlayerDao.getInstance();
+        System.out.println(playerDao.getPlayers(1));
+        System.out.println(playerDao.getPlayer("default"));
+        System.out.println(playerDao.getPlayer("test"));
     }
 }
