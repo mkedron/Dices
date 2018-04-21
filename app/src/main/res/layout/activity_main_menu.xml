@@ -15,11 +15,22 @@
         tools:layout_editor_absoluteX="8dp">
 
         <Button
+            android:id="@+id/addPlayerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="addPlayer"
+            android:text="@string/addPlayerButtonText"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="186dp" />
+
+        <Button
             android:id="@+id/newGameButton"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_weight="1"
+            android:onClick="newGame"
             android:text="@string/new_game_text"
             tools:layout_editor_absoluteX="19dp"
             tools:layout_editor_absoluteY="183dp" />
@@ -35,6 +46,14 @@
             tools:layout_editor_absoluteY="113dp" />
 
         <Button
+            android:id="@+id/clearResultsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clearResults"
+            android:text="@string/clearResultsButtonString" />
+
+        <Button
             android:id="@+id/exitButton"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -42,15 +61,7 @@
             android:text="@string/exit_text"
             tools:layout_editor_absoluteX="20dp"
             tools:layout_editor_absoluteY="43dp" />
-    </LinearLayout>
 
-    <EditText
-        android:id="@+id/appNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="312dp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

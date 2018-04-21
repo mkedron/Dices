@@ -3,6 +3,7 @@
     package="mkedron.vistula.pl.dices">
 
     <application
+        android:name=".DicesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

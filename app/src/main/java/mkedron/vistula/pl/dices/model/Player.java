@@ -1,13 +1,14 @@
 package mkedron.vistula.pl.dices.model;
 
+import android.support.annotation.NonNull;
+
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
 
 /**
  * Created by mkked on 03.03.2018.
  */
 @Element(name = "player")
-public class Player {
+public class Player implements Comparable<Player>{
 
     @Element
     private String id;
@@ -58,6 +59,11 @@ public class Player {
         return name != null ? name.hashCode() : 0;
     }
 
+    public String getResultString() {
+        String format = "ID : %s %s - %s";
+        return String.format(format,id, name,score);
+    }
+
     @Override
     public String toString() {
         return "Player{" +
@@ -65,5 +71,10 @@ public class Player {
                 ", name='" + name + '\'' +
                 ", score=" + score +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NonNull Player o) {
+        return score.compareTo(o.getScore());
     }
 }

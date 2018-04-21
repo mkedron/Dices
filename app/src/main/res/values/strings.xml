@@ -4,4 +4,9 @@
     <string name="results_text">Wyniki</string>
     <string name="exit_text">Wyjście</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="addPlayerButtonText">Dodaj gracza</string>
+    <string name="playButtonString">GRAJ !</string>
+    <string name="saveRusultsButtonString">Zapisz wynik</string>
+    <string name="playerNameString">nazwa gracza</string>
+    <string name="clearResultsButtonString">Wyczyść wyniki</string>
 </resources>
