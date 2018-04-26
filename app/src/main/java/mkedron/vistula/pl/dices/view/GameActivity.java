@@ -2,16 +2,14 @@ package mkedron.vistula.pl.dices.view;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import java.util.Random;
+import android.widget.TextView;
 
 import mkedron.vistula.pl.dices.R;
 import mkedron.vistula.pl.dices.dao.PlayerDao;
@@ -21,11 +19,20 @@ import mkedron.vistula.pl.dices.model.Player;
 
 public class GameActivity extends AppCompatActivity {
 
+    public static final String SCORE = "Wynik : ";
+    public static final String MAX_SCORE = " max : ";
+    public static final String GAME_COUNTER = "Rozgrywka : ";
     private Dice diceLeft;
     private Dice diceRight;
     private Dialog dialog;
     private PlayerDao playerDao;
     private DiceResourceMap diceResourceMap;
+    private TextView scoreTextView;
+    private TextView highScoreTextView;
+    private TextView counterTextView;
+    private Button playGameButton;
+    private Integer gameCounter = 1;
+    private Integer score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,10 @@ public class GameActivity extends AppCompatActivity {
         diceResourceMap = DiceResourceMap.getInstance();
         diceLeft = new Dice(getImageViewById(R.id.diceLeft));
         diceRight = new Dice(getImageViewById(R.id.diceRight));
+        scoreTextView = (TextView) findViewById(R.id.scoreTextView);
+        highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
+        counterTextView = (TextView) findViewById(R.id.counterTextView);
+        playGameButton = (Button) findViewById(R.id.playButton);
         playerDao = PlayerDao.getInstance();
 
     }
@@ -48,6 +59,8 @@ public class GameActivity extends AppCompatActivity {
         Player player = prepareNewPlayer();
         playerDao.savePlayer(player);
         dialog.cancel();
+        enablePlayGameButton(true);
+        enableSaveResultButton(false);
         moveToMainMenuActivity();
     }
 
@@ -56,7 +69,7 @@ public class GameActivity extends AppCompatActivity {
         EditText playerEditText = (EditText) dialog.findViewById(R.id.playerName);
         Player player = new Player();
         player.setName(playerEditText.getText().toString());
-        player.setScore(getScore());
+        player.setScore(score);
         return player;
     }
 
@@ -73,18 +86,45 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void playGame(View view) {
-        diceLeft.rand();
-        diceRight.rand();
-        enableSaveResultButton();
+        diceLeft.play();
+        diceRight.play();
+        updateScore();
+        printScore();
+        gameCounter++;
+        if(gameCounter > 10) {
+            enableSaveResultButton(true);
+            enablePlayGameButton(false);
+        }
 
+    }
+
+    private void updateScore() {
+        if(score < getScore()) {
+            score = getScore();
+        }
     }
 
     private ImageView getImageViewById(int diceId) {
         return (ImageView) findViewById(diceId);
     }
 
-    private void enableSaveResultButton() {
-        findViewById(R.id.saveResultsButton).setVisibility(View.VISIBLE);
+    private void printScore() {
+        scoreTextView.setText(SCORE +String.valueOf(getScore()));
+        highScoreTextView.setText(MAX_SCORE+String.valueOf(score));
+        counterTextView.setText(GAME_COUNTER +gameCounter);
+
+    }
+
+    private void enablePlayGameButton(boolean enabled) {
+        playGameButton.setEnabled(enabled);
+    }
+
+    private void enableSaveResultButton(boolean enabled) {
+        if(enabled) {
+            findViewById(R.id.saveResultsButton).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.saveResultsButton).setVisibility(View.INVISIBLE);
+        }
     }
 
 

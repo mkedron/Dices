@@ -59,7 +59,7 @@
             android:id="@+id/saveResultsButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="173dp"
+            android:layout_marginBottom="115dp"
             android:onClick="saveResult"
             android:text="@string/saveRusultsButtonString"
             android:visibility="invisible"
@@ -71,6 +71,48 @@
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintRight_creator="1"
             tools:text="@string/saveRusultsButtonString" />
+
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="0dp"
+            android:layout_height="59dp"
+            android:text="@string/scoreTextViewString"
+            android:textSize="28sp"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            android:layout_marginStart="52dp"
+            app:layout_constraintBottom_toBottomOf="@+id/saveResultsButton"
+            android:layout_marginEnd="52dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="61dp"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/playButton" />
+
+        <TextView
+            android:id="@+id/highScoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/maxScoreString"
+            tools:layout_constraintTop_creator="1"
+            tools:layout_constraintRight_creator="1"
+            android:layout_marginEnd="115dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="41dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/counterTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/counterTextViewString"
+            app:layout_constraintTop_toTopOf="@+id/highScoreTextView"
+            android:layout_marginStart="16dp"
+            tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

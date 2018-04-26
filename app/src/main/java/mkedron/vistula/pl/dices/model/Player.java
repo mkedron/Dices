@@ -43,6 +43,14 @@ public class Player implements Comparable<Player>{
         this.score = score;
     }
 
+    public boolean updateScore(Integer score) {
+        if(this.score < score) {
+            this.score = score;
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,7 +68,7 @@ public class Player implements Comparable<Player>{
     }
 
     public String getResultString() {
-        String format = "ID : %s %s - %s";
+        String format = "ID : %s ||| %s - %s";
         return String.format(format,id, name,score);
     }
 

@@ -9,4 +9,7 @@
     <string name="saveRusultsButtonString">Zapisz wynik</string>
     <string name="playerNameString">nazwa gracza</string>
     <string name="clearResultsButtonString">Wyczyść wyniki</string>
+    <string name="scoreTextViewString">Wynik :</string>
+    <string name="counterTextViewString">Licznik :</string>
+    <string name="maxScoreString">Max</string>
 </resources>

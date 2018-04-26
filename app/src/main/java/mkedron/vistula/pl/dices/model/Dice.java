@@ -22,7 +22,7 @@ public class Dice {
         diceResourceMap = DiceResourceMap.getInstance();
     }
 
-    public void rand() {
+    public void play() {
         score = getRandDiceValue();
         imageView.setImageDrawable(diceResourceMap.getDrawableByValue(score));
     }

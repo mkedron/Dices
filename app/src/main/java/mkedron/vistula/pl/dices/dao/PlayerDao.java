@@ -86,6 +86,13 @@ public class PlayerDao {
 
     public void savePlayer(Player player) {
         Players players = parsePlayersFromReader();
+        for(Player p : players.getPlayers()) {
+            if (p.getName().equals(player.getName())) {
+                p.updateScore(player.getScore());
+                parsePlayersToResource(players);
+                return;
+            }
+        }
         players.addPlayer(player);
         parsePlayersToResource(players);
 
