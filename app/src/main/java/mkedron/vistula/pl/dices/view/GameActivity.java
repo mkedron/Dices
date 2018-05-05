@@ -55,8 +55,15 @@ public class GameActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void savePlayer(View view) {
+    public void savePlayerAction(View view) {
+
         Player player = prepareNewPlayer();
+        if(validatePlayer(player)) {
+            savePlayer(player);
+        }
+    }
+
+    private void savePlayer(Player player) {
         playerDao.savePlayer(player);
         dialog.cancel();
         enablePlayGameButton(true);
@@ -71,6 +78,13 @@ public class GameActivity extends AppCompatActivity {
         player.setName(playerEditText.getText().toString());
         player.setScore(score);
         return player;
+    }
+
+    private boolean validatePlayer(Player player) {
+        if(player.getName() == null || player.getName() == "") {
+            return false;
+        }
+        return true;
     }
 
     private void moveToMainMenuActivity() {
